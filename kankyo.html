@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
 </head>
 <body>
     <h1>環境構築</h1>
@@ -9,5 +11,16 @@
     <p>windowsでやるにはrubyのインストールが必要。rubygemからsassを入れる必要があり</p>
     <p>コマンドプロンプトでscssのあるフォルダに移動し、以下のようにコマンドをうつ</p>
     <pre>sass style.scss:style.css</pre>
+
+    <input id="txt01" type="text"></input>
+    <button id="btn01" class="btn btn-primary">ALERT</button>
+    <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="vendor/popper.js/dist/popper.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        $('#btn01').click(function() {
+            alert($('#txt01').val());
+        });
+    </script>
 </body>
 </html>
