@@ -3,16 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="custom.css">
     <style>
 
         pre{
-            background-color: #455A64;
-            margin: 8px 0;
-            padding: 8px;
-            color: #ffffff;
-            white-space: pre-wrap;
-            line-height: 1.5;        
+            background-color: #eee;
+            padding: 8px 0 !important;
         }
 
         h2{
@@ -20,6 +16,7 @@
             border-bottom: 2px solid #333;
             padding:0 10px 2px;
         }
+        
     </style>
 </head>
 <body>
@@ -28,16 +25,24 @@
         <h1>環境構築メモ</h1>
         <h2>bootstrap4 コンパイル方法</h2>
         <p>windowsでやるにはrubyのインストールが必要。rubygemからsassを入れる必要があり<br>
-        コマンドプロンプトでscssのあるフォルダに移動し、以下のようにコマンドをうつ</p>
-        <pre>sass style.scss:style.css</pre>
-
+        <p>bootstrap/scssフォルダにcustom.scssなど適当なファイルを作成して、</p>
+<pre class="prettyprint lang-css">
+    $theme-colors: ("primary": #138891);
+    $enable-rounded: false;
+    @import "bootstrap";
+</pre>
+        <p>コマンドプロンプトでscssのあるフォルダに移動し、以下のようにコマンドをうつ</p>
+<pre class="prettyprint lang-bash">
+    sass custom.scss:custom.css
+</pre>
+        <p>custom.cssに全て反映されたものが作成される</p>
         <input id="txt01" type="text"></input>
         <button id="btn01" class="btn btn-primary">ALERT</button>
-
     </div>
     <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="vendor/popper.js/dist/umd/popper.js"></script>
     <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <script>
         $('#btn01').click(function() {
             alert($('#txt01').val());
