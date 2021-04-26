@@ -1,3 +1,6 @@
-$theme-colors: ("primary": #00ff99);
-$enable-rounded: false;
+//$theme-colors: ("primary": #00ff99);
+//$enable-rounded: false;
+$enable-shadows: true;
+$enable-gradients: true;
+$enable-transitions:false;
 @import "bootstrap";
