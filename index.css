@@ -47,6 +47,10 @@ table {
     border-spacing: 0;
 }
 
+/* http://renoizm.com/
+   v1.0 | 20210426
+*/
+
 *,
 *::before,
 *::after {  box-sizing: border-box; }
@@ -67,10 +71,12 @@ body{
         width:1200px;
     }
 }
+
 .row {
     display: flex;
     flex-wrap: wrap;
 }
+
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12,
 .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm {
   position: relative;
@@ -115,23 +121,27 @@ h1{
 }
 
 h2{
-    font-size: 18px;
-    margin:15px auto;
-    border-left: rgb(55, 55, 197) solid 5px;
-    padding:5px 10px;
+    font-size: 16pt;
+    padding: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-left-width: .25rem;
+    border-radius: .25rem;
+    border-left-color: #5bc0de;     
 }
 
 div.skill h3{
     border-bottom:#222 solid 1px;
     font-size: 16px;
-    padding:10px;
-}
-@media (min-width: 768px) {
-    div.skill h3{
-        width:90%;
-    }
+    padding:10px 5px;
+    margin:0 10px;
 }
 
-ul.skill li{
+div.skill ul{
+    margin-bottom:30px;
+}
+
+div.skill li{
     margin:10px 0 10px 20px;
 }
