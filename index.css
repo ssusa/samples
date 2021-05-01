@@ -60,11 +60,11 @@ body{
     padding-left: 10px;
     margin-right: auto;
     margin-left: auto;
-    width:1200px;
+    width:100%;
 }
-@media (min-width: 0px) and (max-width: 767px) {
+@media (min-width: 768px) {
     .container{
-        width:100%; 
+        width:1200px;
     }
 }
 .row {
@@ -105,8 +105,11 @@ body{
     .col-12 {max-width: 100%; }
 }
 
-h1{
+body{
     font-family: 'M PLUS 1p', sans-serif;
+}
+
+h1{
     font-size: 24px;
     margin:20px auto;
 }
@@ -114,16 +117,19 @@ h1{
 h2{
     font-size: 18px;
     margin:15px auto;
-    border-left: blue solid 5px;
+    border-left: rgb(55, 55, 197) solid 5px;
     padding:5px 10px;
 }
 
 div.skill h3{
-    font-family: 'M PLUS 1p', sans-serif;
-    width:90%;
     border-bottom:#222 solid 1px;
     font-size: 16px;
-    padding:10px;    
+    padding:10px;
+}
+@media (min-width: 768px) {
+    div.skill h3{
+        width:90%;
+    }
 }
 
 ul.skill li{
