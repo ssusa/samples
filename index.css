@@ -56,8 +56,8 @@ body{
 }
 
 .container{
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
     margin-right: auto;
     margin-left: auto;
     width:1200px;
@@ -114,19 +114,24 @@ h1{
 h2{
     font-size: 18px;
     margin:15px auto;
+    border-left: blue solid 5px;
+    padding:5px 10px;
 }
 
-h3{
+div.skill h3{
+    font-family: 'M PLUS 1p', sans-serif;
+    width:90%;
+    border-bottom:#222 solid 1px;
     font-size: 16px;
-    margin:10px auto;
-    padding-left:10px;
+    padding:10px;    
 }
 
 ul.skill li{
     margin:10px 0 10px 20px;
 }
 
-
+/*
 *{
     border: 1px red solid !important;
 }
+*/
