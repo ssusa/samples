@@ -17,7 +17,7 @@
 
         h2{
             border-left: 10px solid #888;
-            border-bottom: 2px solid #333;
+            border-bottom: 2px solid #888;
             padding:0 10px 2px;
         }
 
@@ -38,6 +38,7 @@
     <div class="container">
 
         <h1>環境構築メモ</h1>
+<!-------------------------------------------------------------------------------------------------------------->        
         <h2>bootstrap4 コンパイル方法</h2>
         <div class="bd-callout-info">
         windowsでやるにはrubyのインストールが必要。rubygemからsassを入れる必要があり
@@ -58,9 +59,9 @@
         <p>custom.cssに全て反映されたものが作成されるため、それをHTMLから参照させればOK</p>
         <p>_variables.scssに記載されているものはすべて書き換えられる</p>
         <a href="https://getbootstrap.jp/docs/4.1/getting-started/theming/">Sass オプション</a>
-
-        <br><br>
-
+<!-------------------------------------------------------------------------------------------------------------->
+<br><br>
+<!-------------------------------------------------------------------------------------------------------------->        
         <h2>google font 使用方法（ダウンロード）</h2>
         <p>ローカルに配置し、cssに記載する</p>
 <pre class="prettyprint lang-css">
@@ -86,8 +87,19 @@
         font-family: 'M PLUS 1p', sans-serif;
     }
 </pre>
-
-
+<!-------------------------------------------------------------------------------------------------------------->
+<br><br>
+<!-------------------------------------------------------------------------------------------------------------->  
+        <h2>指定アイコンのみダウンロード</h2>
+        <p><a href="https://icomoon.io/">icomoon.io</a>から指定したアイコンのみのセットのダウンロードが可。
+        しかしicomoon.ioにはないアイコンもある。例えば、<a href="https://fontawesome.com/" >Font Awesome</a>の
+        icon-smile-solidはないが、Font Awesomeのサイトからはsvgをダウンロードができる。
+        icomoon.ioでアップロードができるため、以下の順番でやれば好きなものだけのセットが出来上がる</p>
+        <ol>
+            <li>Font Awesomeでsvgダウンロード</li>
+            <li>icomoon.ioのImportIconsでsvgアップロード</li>
+            <li>icomoon.ioで作成</li>
+        </ol> 
 
         <input id="txt01" type="text" class="form-control form-control-sm"></input>
         <button id="btn01" class="btn btn-primary btn-sm">ALERT</button>
