@@ -60,10 +60,6 @@ table {
 *::before,
 *::after {  box-sizing: border-box; }
 
-body{
-    font-size: 14px;
-}
-
 .container{
     padding-right: 10px;
     padding-left: 10px;
@@ -71,7 +67,7 @@ body{
     margin-left: auto;
     width:100%;
 }
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
     .container{
         width:1200px;
     }
@@ -118,6 +114,7 @@ body{
 
 body{
     font-family: 'M PLUS 1p', sans-serif;
+    font-size: 14px;
 }
 
 h1{
