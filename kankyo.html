@@ -11,6 +11,10 @@
             padding: 8px 0 !important;
         }
 
+        h1{
+            padding-top:10px;
+        }
+
         h2{
             border-left: 10px solid #888;
             border-bottom: 2px solid #333;
@@ -68,7 +72,23 @@
         font-family: 'M PLUS 1p', sans-serif;
     }
 </pre>
-    
+        <p>フォントの（自身のウェブサーバーからの）ダウンロードに時間がかかる場合、
+            以下のようにfont-display: swapと、local('sans-serif')をつけると、
+            フォントが読み込まれるまでユーザーのローカルのフォントが使用されため表示が早くなる。
+            ただし、ダウンロードされるまで、本来設定したフォントでは表示されない</p>
+<pre class="prettyprint lang-css">
+    @font-face {
+        font-family: 'M PLUS 1p';
+        font-display: swap;
+        src: local('sans-serif'), url(vendor/google.fonts/MPLUS1p-Bold.ttf);
+    }
+    body{
+        font-family: 'M PLUS 1p', sans-serif;
+    }
+</pre>
+
+
+
         <input id="txt01" type="text" class="form-control form-control-sm"></input>
         <button id="btn01" class="btn btn-primary btn-sm">ALERT</button>
     </div>
