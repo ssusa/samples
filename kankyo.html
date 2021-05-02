@@ -56,6 +56,19 @@
         <a href="https://getbootstrap.jp/docs/4.1/getting-started/theming/">Sass オプション</a>
 
         <br><br>
+
+        <h2>google font 使用方法（ダウンロード）</h2>
+        <p>ローカルに配置し、cssに記載する</p>
+<pre class="prettyprint lang-css">
+    @font-face {
+        font-family: 'M PLUS 1p';
+        src: url(vendor/google.fonts/MPLUS1p-Bold.ttf);
+    }
+    body{
+        font-family: 'M PLUS 1p', sans-serif;
+    }
+</pre>
+    
         <input id="txt01" type="text" class="form-control form-control-sm"></input>
         <button id="btn01" class="btn btn-primary btn-sm">ALERT</button>
     </div>

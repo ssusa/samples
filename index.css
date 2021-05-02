@@ -51,6 +51,11 @@ table {
    v1.0 | 20210426
 */
 
+@font-face {
+	font-family: 'M PLUS 1p';
+	src: url(vendor/google.fonts/MPLUS1p-Bold.ttf);
+}
+
 *,
 *::before,
 *::after {  box-sizing: border-box; }
@@ -131,17 +136,25 @@ h2{
     border-left-color: #5bc0de;     
 }
 
-div.skill h3{
+.skill h3{
     border-bottom:#222 solid 1px;
     font-size: 16px;
     padding:10px 5px;
     margin:0 10px;
 }
 
-div.skill ul{
+.skill ul{
     margin-bottom:30px;
 }
 
-div.skill li{
+.skill li{
     margin:10px 0 10px 20px;
+}
+
+.footer{
+    font-size: 9pt;
+    font-family: sans-serif;
+    border-top: #222 solid 1px;
+    text-align: center;
+    padding: 10px 0;
 }
