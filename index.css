@@ -218,3 +218,19 @@ h2{
     padding: 10px 0;
 }
 
+/* balance.html */
+
+.balance table{
+    text-align: left;
+    margin:0 15px;
+    line-height:14pt;
+}
+
+.balance table tr{
+    height:20px;
+}
+
+.balance table td{
+    border: 1px solid #dee2e6;
+}
+

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css">     
     <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
@@ -16,12 +16,12 @@
                 url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_all_docs?include_docs=true',
                 type: 'GET',
                 beforeSend: function( xhr ){
-                    // 読み取り専用ユーザー
+                    // 読取専用ユーザー
                     xhr.setRequestHeader( "Authorization", "Basic " + btoa("apikey-d13bc10a262b4e2c8bcda33b1b011d6f:97a84d74aaebae04a5ae6157fd3e71dd5b129e0b"));
                 },
                 success: function(result){
-                    $.each(result.rows, function(i, doc){
-                        $('#balance').append('<tr><td>' + doc.date + '</td><td>' + doc.balance + '</td></tr>');
+                    $.each(result.rows, function(i, row){
+                        $('#balance').append('<tr><td>' + row.doc.date + '</td><td>' + row.doc.balance + '</td></tr>');
                     });
                 },
                 error: function( e0, e1, e2 ){
