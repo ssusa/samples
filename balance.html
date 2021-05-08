@@ -21,7 +21,8 @@
                 },
                 success: function(result){
                     $.each(result.rows, function(i, row){
-                        $('.balance').append('<tr><td>' + row.doc.date + '</td><td>' + row.doc.balance + '</td></tr>');
+                        red = row.doc.balance < 0 ? "red" : "";
+                        $('.balance').append('<tr><th>' + row.doc.date + '</th><td class="'+ red +'">' + row.doc.balance + '</td></tr>');
                     });
                 },
                 error: function( e0, e1, e2 ){
@@ -54,7 +55,20 @@
     <main>
         <div class="container" >
             <table class="balance">
-                
+<!--
+                <tr>
+                    <th>2020/01/01</th>
+                    <td class="">5000</td>
+                </tr>
+                <tr>
+                    <th>2020/01/02</th>
+                    <td class="">168000</td>
+                </tr>
+                <tr>
+                    <th>2020/01/04</th>
+                    <td class="red">-5000</td>
+                </tr>                                
+-->
             </table>
         </div>        
     </main>

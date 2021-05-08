@@ -221,16 +221,25 @@ h2{
 /* balance.html */
 
 .balance{
-    text-align: left;
-    margin:0 15px;
+    text-align: center;
+    margin:20px 0;
     line-height:14pt;
 }
-
 .balance tr{
-    height:20px;
+    height:25px;
+}
+.balance th{
+    border: 1px solid #777;
+    padding:5px;
+    width: 150px;
+}
+.balance td{
+    border: 1px solid #777;
+    padding:5px;
+    width: 100px;
+}
+.balance td.red{
+    color:red;
 }
 
-.balance td{
-    border: 1px solid #dee2e6;
-}
 
