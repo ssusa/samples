@@ -11,14 +11,18 @@
     <script>
         $(document).ready(function() {
             $('.drawer').drawer();
+            // クロスオリジン要求済
             $.ajax({
                 url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_all_docs?include_docs=true',
                 type: 'GET',
                 beforeSend: function( xhr ){
+                    // 読み取り専用ユーザー
                     xhr.setRequestHeader( "Authorization", "Basic " + btoa("apikey-d13bc10a262b4e2c8bcda33b1b011d6f:97a84d74aaebae04a5ae6157fd3e71dd5b129e0b"));
                 },
                 success: function(result){
-                    alert(result);
+                    $.each(result.rows, function(i, doc){
+                        $('#balance').append('<tr><td>' + doc.date + '</td><td>' + doc.balance + '</td></tr>');
+                    });
                 },
                 error: function( e0, e1, e2 ){
                     console.log( e0, e1, e2 );
@@ -49,97 +53,9 @@
     </header>
     <main>
         <div class="container" >
-            <h2>人物</h2>
-            <div class="jimbutsu">
-                <table>
-                    <tr>
-                        <td class="td1">作業時間(週)</td>
-                        <td class="td2">：</td>
-                        <td class="td3">5時間～8時間</td>
-                    </tr>
-                    <tr>
-                        <td class="td1">開発PC</td>
-                        <td class="td2">：</td>
-                        <td class="td3">Windows10(desktop)、MacOS(desktop)</td>
-                    </tr>
-                    <tr>
-                        <td class="td1">確認端末</td>
-                        <td class="td2">：</td>
-                        <td class="td3">iPhone7、iPhoneSE(2020)、iPhone12、Fireタブレット(FireHD10)</td>
-                    </tr>                                        
-                </table>
-            </div>
-            <h2>スキル</h2>
-            <div class="row">
-                <div class="col-4 skill">
-                    <h3>言語</h3>
-                    <ul>
-                        <li>C#<i class="icon-smile-solid"></i></li>
-                        <li>Java</li>
-                        <li>Ruby on Rails<i class="icon-smile-solid"></i></li>
-                        <li>HTML<i class="icon-smile-solid"></i></li>    
-                        <li>css<i class="icon-smile-solid"></i></li>    
-                        <li>JavaScript</li>
-                    </ul>
-                </div>
-                <div class="col-4 skill">
-                    <h3>IDE</h3>
-                    <ul>
-                        <li>Visual Stadio(C#)<i class="icon-smile-solid"></i></i>
-                        <li>Eclipse(Java)</li>
-                        <li>RubyMine(Ruby)<i class="icon-smile-solid"></i></li>
-                        <li>Visual Studio Code<i class="icon-smile-solid"></i></li>    
-                    </ul>
-                </div>
-                <div class="col-4 skill">
-                    <h3>フレームワーク</h3>
-                    <ul>
-                        <li>BootStrap<i class="icon-smile-solid"></i></li>
-                        <li>JQuery<i class="icon-smile-solid"></i></li>
-                        <li>Angular JS</li>
-                        <li>.net framework(C#)<i class="icon-smile-solid"></i></li>
-                        <li>Spring(Java)</li>
-                        <li>Spring Boot(Java)</li>
-                        <li>MyBatis(Java)</li>
-                        <li>Hibernate(Java)</li>
-                    </ul>                    
-                </div>                          
-                <div class="col-4 skill">
-                    <h3>DB</h3>
-                    <ul>
-                        <li>Oracle<i class="icon-smile-solid"></i></li>
-                        <li>SqlServer<i class="icon-smile-solid"></i></li>
-                    </ul>
-                </div>
-                <div class="col-4 skill">
-                    <h3>ソース管理</h3>
-                    <ul>
-                        <li>Git<i class="icon-smile-solid"></i></li>
-                        <li>Subversion</li>
-                        <li>Team Foundation Server<i class="icon-smile-solid"></i></li>
-                        <li>Visual SourceSafe<i class="icon-smile-solid"></i></li>
-                    </ul>
-                </div>
-                <div class="col-4 skill">
-                    <h3><span>OS</span></h3>
-                    <ul>
-                        <li>Windows<i class="icon-smile-solid"></i></li>
-                        <li>Windows Server<i class="icon-smile-solid"></i></li>
-                        <li>MacOS<i class="icon-smile-solid"></i></li>
-                        <li>Linux</li>
-                        <li>RedHat</li>
-                    </ul>
-                </div>                
-                <div class="col-4 skill">
-                    <h3>その他</h3>
-                    <ul>
-                        <li>AWS</li>
-                        <li>GMO Cloud</li>
-                        <li>IIS<i class="icon-smile-solid"></i></li>
-                        <li>Apache<i class="icon-smile-solid"></i></li>
-                    </ul>                    
-                </div>                
-            </div>
+            <table id="balance">
+                
+            </table>
         </div>        
     </main>
     <footer>

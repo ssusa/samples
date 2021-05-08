@@ -99,19 +99,45 @@
             <li>Font Awesomeでsvgダウンロード</li>
             <li>icomoon.ioのImportIconsでsvgアップロード</li>
             <li>icomoon.ioで作成</li>
-        </ol> 
-
-        <input id="txt01" type="text" class="form-control form-control-sm"></input>
-        <button id="btn01" class="btn btn-primary btn-sm">ALERT</button>
+        </ol>
+<!-------------------------------------------------------------------------------------------------------------->
+<br><br>
+<!-------------------------------------------------------------------------------------------------------------->  
+        <h2>GitHubPagesからIBM Cloudデータベース Cludantの使用</h2>
+        <p>Cludantはjson形式のDBで、IBMのAPIを使用して、httpsアクセスが可能なため、ajax通信でDBを使用できる。
+        ただし、ブラウザから別ドメインへの通信のため、クロスオリジンの問題があるため、IBM側で許可しなければいけない。
+        以下の手順で可能
+        </p>
+        <ol>
+            <li><a href="https://cloud.ibm.com/">IBM Cloud</a>にアカウント作成</li>
+            <li>CludantのDB作成（このとき、Authentification MethodにIAM and legacy credentialsを設定することで、ベーシック認証も許可される）</li>
+            <li>Document作成（普通のDBでいうテーブルのこと）</li>
+            <li>DB読取専用ユーザー、パスワード作成</li>
+            <li>アカウント情報より、クロスオリジンの設定（許可したいドメインを設定）</li>
+            <li>GitHubPagesからのAjax通信で以下のようにRequestHeaderにベーシック認証の値を書けばDBから取得できる</li>
+        </ol>
+<pre class="prettyprint lang-jscript">
+    $.ajax({
+        url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_all_docs?include_docs=true',
+        type: 'GET',
+        beforeSend: function( xhr ){
+            // 読み取り専用ユーザー
+            // btoaはBASE64変換
+            xhr.setRequestHeader( "Authorization", "Basic " + btoa("readonlyuserid:password"));
+        },
+        success: function(result){
+        },
+        error: function( e0, e1, e2 ){
+        }
+    });
+</pre>
+        <a href="http://dotnsf.blog.jp/archives/2021-02.html">参考にしたサイト</a>
     </div>
     <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="vendor/popper.js/dist/umd/popper.js"></script>
     <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.js"></script>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <script>
-        $('#btn01').click(function() {
-            alert($('#txt01').val());
-        });
-    </script>    
+
+
 </body>
 </html>
