@@ -12,7 +12,7 @@
         $(document).ready(function() {
             $('.drawer').drawer();
             $.ajax({
-                url: 'https://apikey-v2-7wdcbvyjmov0rzhz45ao3vm3j76788769donhvbeurw:b3f48d5fb70fe3ef63848a8f80ad2d21@371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/_all_docs'
+                url: 'https://apikey-v2-7wdcbvyjmov0rzhz45ao3vm3j76788769donhvbeurw:b3f48d5fb70fe3ef63848a8f80ad2d21@371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_all_docs?include_docs=true'
             }).done(function(data){
                 alert(1);
                 alert(data);
