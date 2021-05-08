@@ -220,17 +220,17 @@ h2{
 
 /* balance.html */
 
-.balance table{
+.balance{
     text-align: left;
     margin:0 15px;
     line-height:14pt;
 }
 
-.balance table tr{
+.balance tr{
     height:20px;
 }
 
-.balance table td{
+.balance td{
     border: 1px solid #dee2e6;
 }
 
