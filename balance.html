@@ -12,7 +12,7 @@
         $(document).ready(function() {
             $('.drawer').drawer();
             $.ajax({
-                url: '371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_all_docs?include_docs=true',
+                url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_all_docs?include_docs=true',
                 type: 'GET',
                 beforeSend: function( xhr ){
                     xhr.setRequestHeader( "Authorization", "Basic " + btoa("apikey-d13bc10a262b4e2c8bcda33b1b011d6f:97a84d74aaebae04a5ae6157fd3e71dd5b129e0b"));
