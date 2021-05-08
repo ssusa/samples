@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.drawer').drawer();
+            $.ajax({
+                url: 'https://apikey-v2-7wdcbvyjmov0rzhz45ao3vm3j76788769donhvbeurw:b3f48d5fb70fe3ef63848a8f80ad2d21@371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/_alldocs'
+            }).done(function(data){
+                alert(1);
+                alert(data);
+            }).fail(function(data){
+                alert(2);
+                alert(data);
+            }).always(function(data){
+                alert(3);
+                alert(data);
+            });
+        });
+    </script>        
+</head>
+<body class="drawer drawer--right">
+    <header role="banner">
+        <button type="button" class="drawer-toggle drawer-hamburger">
+            <span class="sr-only">toggle navigation</span>
+            <span class="drawer-hamburger-icon"></span>
+        </button>
+        <nav class="drawer-nav" role="navigation">
+            <ul class="drawer-menu">
+                <li><a class="drawer-brand" href="#">メニュー</a></li>
+                <li><a class="drawer-menu-item" href="https://www.renoizm.com">トップページ</a></li>
+                <li><a class="drawer-menu-item" href="https://www.renoizm.com/kankyo">環境構築メモ</a></li>
+                <li><a class="drawer-menu-item" href="https://www.renoizm.com/balance">収支表</a></li>
+            </ul>
+        </nav>
+    </header>    
+    <header style="border-bottom: #222 solid 1px;" >
+        <div class="container">
+            <h1>タロチ's　ポートフォリオ</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container" >
+            <h2>人物</h2>
+            <div class="jimbutsu">
+                <table>
+                    <tr>
+                        <td class="td1">作業時間(週)</td>
+                        <td class="td2">：</td>
+                        <td class="td3">5時間～8時間</td>
+                    </tr>
+                    <tr>
+                        <td class="td1">開発PC</td>
+                        <td class="td2">：</td>
+                        <td class="td3">Windows10(desktop)、MacOS(desktop)</td>
+                    </tr>
+                    <tr>
+                        <td class="td1">確認端末</td>
+                        <td class="td2">：</td>
+                        <td class="td3">iPhone7、iPhoneSE(2020)、iPhone12、Fireタブレット(FireHD10)</td>
+                    </tr>                                        
+                </table>
+            </div>
+            <h2>スキル</h2>
+            <div class="row">
+                <div class="col-4 skill">
+                    <h3>言語</h3>
+                    <ul>
+                        <li>C#<i class="icon-smile-solid"></i></li>
+                        <li>Java</li>
+                        <li>Ruby on Rails<i class="icon-smile-solid"></i></li>
+                        <li>HTML<i class="icon-smile-solid"></i></li>    
+                        <li>css<i class="icon-smile-solid"></i></li>    
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+                <div class="col-4 skill">
+                    <h3>IDE</h3>
+                    <ul>
+                        <li>Visual Stadio(C#)<i class="icon-smile-solid"></i></i>
+                        <li>Eclipse(Java)</li>
+                        <li>RubyMine(Ruby)<i class="icon-smile-solid"></i></li>
+                        <li>Visual Studio Code<i class="icon-smile-solid"></i></li>    
+                    </ul>
+                </div>
+                <div class="col-4 skill">
+                    <h3>フレームワーク</h3>
+                    <ul>
+                        <li>BootStrap<i class="icon-smile-solid"></i></li>
+                        <li>JQuery<i class="icon-smile-solid"></i></li>
+                        <li>Angular JS</li>
+                        <li>.net framework(C#)<i class="icon-smile-solid"></i></li>
+                        <li>Spring(Java)</li>
+                        <li>Spring Boot(Java)</li>
+                        <li>MyBatis(Java)</li>
+                        <li>Hibernate(Java)</li>
+                    </ul>                    
+                </div>                          
+                <div class="col-4 skill">
+                    <h3>DB</h3>
+                    <ul>
+                        <li>Oracle<i class="icon-smile-solid"></i></li>
+                        <li>SqlServer<i class="icon-smile-solid"></i></li>
+                    </ul>
+                </div>
+                <div class="col-4 skill">
+                    <h3>ソース管理</h3>
+                    <ul>
+                        <li>Git<i class="icon-smile-solid"></i></li>
+                        <li>Subversion</li>
+                        <li>Team Foundation Server<i class="icon-smile-solid"></i></li>
+                        <li>Visual SourceSafe<i class="icon-smile-solid"></i></li>
+                    </ul>
+                </div>
+                <div class="col-4 skill">
+                    <h3><span>OS</span></h3>
+                    <ul>
+                        <li>Windows<i class="icon-smile-solid"></i></li>
+                        <li>Windows Server<i class="icon-smile-solid"></i></li>
+                        <li>MacOS<i class="icon-smile-solid"></i></li>
+                        <li>Linux</li>
+                        <li>RedHat</li>
+                    </ul>
+                </div>                
+                <div class="col-4 skill">
+                    <h3>その他</h3>
+                    <ul>
+                        <li>AWS</li>
+                        <li>GMO Cloud</li>
+                        <li>IIS<i class="icon-smile-solid"></i></li>
+                        <li>Apache<i class="icon-smile-solid"></i></li>
+                    </ul>                    
+                </div>                
+            </div>
+        </div>        
+    </main>
+    <footer>
+        <div class="container footer">
+            Copyright © 2021 renoizm.com All Rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>
