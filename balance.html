@@ -12,14 +12,17 @@
         $(document).ready(function() {
             $('.drawer').drawer();
             $.ajax({
-                url: 'https://apikey-v2-7wdcbvyjmov0rzhz45ao3vm3j76788769donhvbeurw:b3f48d5fb70fe3ef63848a8f80ad2d21@371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_all_docs?include_docs=true'
-            }).done(function(data){
-                alert(1);
-                alert(data);
-            }).fail(function(data){
-                alert(2);
-                alert(data);
-            }).always(function(data){
+                url: '371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_all_docs?include_docs=true',
+                type: 'GET',
+                beforeSend: function( xhr ){
+                    xhr.setRequestHeader( "Authorization", "Basic " + btoa("apikey-d13bc10a262b4e2c8bcda33b1b011d6f:97a84d74aaebae04a5ae6157fd3e71dd5b129e0b"));
+                },
+                success: function(result){
+                    alert(result);
+                },
+                error: function( e0, e1, e2 ){
+                    console.log( e0, e1, e2 );
+                }
             });
         });
     </script>        
