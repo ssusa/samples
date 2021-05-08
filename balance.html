@@ -22,9 +22,9 @@
                     xhr.setRequestHeader( "Authorization", "Basic " + btoa("apikey-d13bc10a262b4e2c8bcda33b1b011d6f:97a84d74aaebae04a5ae6157fd3e71dd5b129e0b"));
                 },
                 success: function(result){
-                    $.each(result.rows, function(i, row){
-                        red = row.doc.balance < 0 ? "red" : "";
-                        $('.balance').append('<tr><th>' + row.doc.date + '</th><td class="'+ red +'">' + row.doc.balance + '</td></tr>');
+                    $.each(result.docs, function(i, row){
+                        red = row.balance < 0 ? "red" : "";
+                        $('.balance').append('<tr><th>' + row.date + '</th><td class="'+ red +'">' + row.balance + '</td></tr>');
                     });
                 },
                 error: function( e0, e1, e2 ){
