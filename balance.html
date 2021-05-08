@@ -13,8 +13,9 @@
             $('.drawer').drawer();
             json = '{"selector": {"date": {"$gt": "0"}},"fields": ["date","balance"],"sort": [{"date": "asc"}]}';
             $.ajax({
-                url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_all_docs?include_docs=true',
+                url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_find',
                 type: 'POST',
+                contentType: 'application/json',
                 data: json,
                 beforeSend: function( xhr ){
                     // 読取専用ユーザー
