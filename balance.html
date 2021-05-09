@@ -8,11 +8,66 @@
     <script type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.drawer').drawer();
 
+/* ローカル実行 */
+/*
+            var labels = new Array(10);
+            var data = new Array(10);
+            result = {"docs":[
+                        {"date":"2000/01/01","balance":27000},
+                        {"date":"2000/01/02","balance":13000},
+                        {"date":"2000/01/03","balance":28000},
+                        {"date":"2000/01/04","balance":19000},
+                        {"date":"2000/01/05","balance":4000},
+                        {"date":"2000/01/06","balance":47000},
+                        {"date":"2000/01/07","balance":48000},
+                        {"date":"2000/01/08","balance":60000},
+                        {"date":"2001/12/30","balance":101000}
+            ]};
+            $.each(result.docs, function(i, row){
+                red = row.balance < 0 ? "red" : "";
+                $('.balance').append('<tr><th>' + row.date + '</th><td class="'+ red +'">' + row.balance + '</td></tr>');
+                if(i==0){
+                    labels[i] = row.date;
+                    data[i] = row.balance;
+                }else{
+                    labels[i] = row.date;
+                    data[i] = data[i-1] + row.balance;
+                }
+            });
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            Chart.defaults.elements.point = {
+                radius: 0,              // ポイントの半径
+                pointStyle: 'circle',   // ポイントのスタイル
+                hitRadius: 0,           // ホバー検出の半径
+                hoverRadius: 0          // ホバー時の半径
+            };
+            // アニメ実行時間
+            Chart.defaults.animation.duration = 0;                    
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '収支',
+                        data: data,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });  
+*/
             json = '{"selector": {"date": {"$gt": "0"}},"fields": ["date","balance"],"sort": [{"date": "asc"}]}';
             $.ajax({
                 url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_find',
@@ -38,6 +93,14 @@
                         }
                     });
                     var ctx = document.getElementById('myChart').getContext('2d');
+                    Chart.defaults.elements.point = {
+                        radius: 0,              // ポイントの半径
+                        pointStyle: 'circle',   // ポイントのスタイル
+                        hitRadius: 0,           // ホバー検出の半径
+                        hoverRadius: 0          // ホバー時の半径
+                    };
+                    // アニメ実行時間
+                    Chart.defaults.animation.duration = 0;                    
                     var myChart = new Chart(ctx, {
                         type: 'line',
                         data: {
@@ -45,24 +108,6 @@
                             datasets: [{
                                 label: '収支',
                                 data: data,
-                                /*
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                */
                                 borderWidth: 1
                             }]
                         },
@@ -79,28 +124,6 @@
                     console.log( e0, e1, e2 );
                 }
             });
-/*            
-            json = '{"selector": {"date": {"$gt": "0"}},"fields": ["date","balance"],"sort": [{"date": "asc"}]}';
-            $.ajax({
-                url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_find',
-                type: 'POST',
-                contentType: 'application/json',
-                data: json,
-                beforeSend: function( xhr ){
-                    // 読取専用ユーザー
-                    xhr.setRequestHeader( "Authorization", "Basic " + btoa("apikey-d13bc10a262b4e2c8bcda33b1b011d6f:97a84d74aaebae04a5ae6157fd3e71dd5b129e0b"));
-                },
-                success: function(result){
-                    $.each(result.docs, function(i, row){
-                        red = row.balance < 0 ? "red" : "";
-                        $('.balance').append('<tr><th>' + row.date + '</th><td class="'+ red +'">' + row.balance + '</td></tr>');
-                    });
-                },
-                error: function( e0, e1, e2 ){
-                    console.log( e0, e1, e2 );
-                }
-            });
-*/               
         });
     </script>        
 </head>
@@ -127,20 +150,7 @@
     <main>
         <div class="container">
             <canvas id="myChart" width="200" height="100"></canvas>
-            <table class="balance">
-                <tr>
-                    <th>2020/01/01</th>
-                    <td class="">5000</td>
-                </tr>
-                <tr>
-                    <th>2020/01/02</th>
-                    <td class="">168000</td>
-                </tr>
-                <tr>
-                    <th>2020/01/04</th>
-                    <td class="red">-5000</td>
-                </tr>                                
-            </table>
+            <table class="balance"></table>
         </div>        
     </main>
     <footer>
