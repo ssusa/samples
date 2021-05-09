@@ -132,6 +132,36 @@
     });
 </pre>
         <a href="http://dotnsf.blog.jp/archives/2021-02.html">参考にしたサイト</a>
+<!-------------------------------------------------------------------------------------------------------------->
+<br><br>
+<!-------------------------------------------------------------------------------------------------------------->  
+        <h2>CouchDBのSELECTでソートする方法</h2>
+        <div class="bd-callout-info">
+            ソートするにはDB側でインデックスを構築しておく必要がある。
+        </div>        
+        <p>SELECTなどはすべてAPI方式でHTTPメソッドが限られている。POSTと一緒にjsonパラメータ（この中に抽出条件やソートなども記載する）を
+        渡す必要あり。
+        </p>
+
+<pre class="prettyprint lang-jscript">
+    // あらかじめ、date列にはCouchDB側でインデックス構築済み
+    json = '{"selector": {"date": {"$gt": "0"}},"fields": ["date","balance"],"sort": [{"date": "asc"}]}';
+
+    $.ajax({
+        url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_find',
+        type: 'POST',
+        contentType: 'application/json',//これないとエラーになる
+        data: json,
+        beforeSend: function( xhr ){
+            xhr.setRequestHeader( "Authorization", "Basic " + btoa("readonlyuserid:password"));
+        },
+        success: function(result){
+        },
+        error: function( e0, e1, e2 ){
+        }
+    }); 
+</pre>
+        <a href="https://docs.couchdb.org/en/stable/api/index.html">CouchDB API Reference（全部英語）</a>
     </div>
     <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="vendor/popper.js/dist/umd/popper.js"></script>
