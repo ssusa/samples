@@ -25,14 +25,16 @@
                 },
                 success: function(result){
                     var labels = new Array(result.docs.length);
-                    var datas = new Array(result.docs.length);
+                    var data = new Array(result.docs.length);
                     $.each(result.docs, function(i, row){
                         red = row.balance < 0 ? "red" : "";
                         $('.balance').append('<tr><th>' + row.date + '</th><td class="'+ red +'">' + row.balance + '</td></tr>');
                         if(i==0){
-                            totalBalance[i] = row.balance;
+                            labels[i] = row.date;
+                            data[i] = row.balance;
                         }else{
-                            totalBalance[i] = totalBalance[i-1] + row.balance;
+                            labels[i] = row.date;
+                            data[i] = data[i-1] + row.balance;
                         }
                     });
                 },
