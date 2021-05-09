@@ -12,6 +12,74 @@
     <script>
         $(document).ready(function() {
             $('.drawer').drawer();
+
+            json = '{"selector": {"date": {"$gt": "0"}},"fields": ["date","balance"],"sort": [{"date": "asc"}]}';
+            $.ajax({
+                url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_find',
+                type: 'POST',
+                contentType: 'application/json',
+                data: json,
+                beforeSend: function( xhr ){
+                    // 読取専用ユーザー
+                    xhr.setRequestHeader( "Authorization", "Basic " + btoa("apikey-d13bc10a262b4e2c8bcda33b1b011d6f:97a84d74aaebae04a5ae6157fd3e71dd5b129e0b"));
+                },
+                success: function(result){
+                    var dateList = new Array(result.docs.length);
+                    var totalBalanceList = new Array(result.docs.length);
+                    $.each(result.docs, function(i, row){
+                        red = row.balance < 0 ? "red" : "";
+                        $('.balance').append('<tr><th>' + row.date + '</th><td class="'+ red +'">' + row.balance + '</td></tr>');
+                        if(i==0){
+                            totalBalance[i] = row.balance;
+                        }else{
+                            totalBalance[i] = totalBalance[i-1] + row.balance;
+                        }
+                    });
+                },
+                error: function( e0, e1, e2 ){
+                    console.log( e0, e1, e2 );
+                }
+            });
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dateList,
+                    datasets: [{
+                        label: '収支',
+                        data: totalBalanceList,
+                        /*
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        */
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+/*            
             json = '{"selector": {"date": {"$gt": "0"}},"fields": ["date","balance"],"sort": [{"date": "asc"}]}';
             $.ajax({
                 url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_find',
@@ -31,26 +99,8 @@
                 error: function( e0, e1, e2 ){
                     console.log( e0, e1, e2 );
                 }
-            });            
-/*            
-            $.ajax({
-                url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_all_docs?include_docs=true',
-                type: 'GET',
-                beforeSend: function( xhr ){
-                    // 読取専用ユーザー
-                    xhr.setRequestHeader( "Authorization", "Basic " + btoa("apikey-d13bc10a262b4e2c8bcda33b1b011d6f:97a84d74aaebae04a5ae6157fd3e71dd5b129e0b"));
-                },
-                success: function(result){
-                    $.each(result.rows, function(i, row){
-                        red = row.doc.balance < 0 ? "red" : "";
-                        $('.balance').append('<tr><th>' + row.doc.date + '</th><td class="'+ red +'">' + row.doc.balance + '</td></tr>');
-                    });
-                },
-                error: function( e0, e1, e2 ){
-                    console.log( e0, e1, e2 );
-                }
             });
-*/            
+*/               
         });
     </script>        
 </head>
@@ -75,9 +125,9 @@
         </div>
     </header>
     <main>
-        <div class="container" >
+        <div class="container">
+            <canvas id="myChart" width="200" height="100"></canvas>
             <table class="balance">
-<!--
                 <tr>
                     <th>2020/01/01</th>
                     <td class="">5000</td>
@@ -90,7 +140,6 @@
                     <th>2020/01/04</th>
                     <td class="red">-5000</td>
                 </tr>                                
--->
             </table>
         </div>        
     </main>
