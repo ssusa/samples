@@ -24,8 +24,8 @@
                     xhr.setRequestHeader( "Authorization", "Basic " + btoa("apikey-d13bc10a262b4e2c8bcda33b1b011d6f:97a84d74aaebae04a5ae6157fd3e71dd5b129e0b"));
                 },
                 success: function(result){
-                    var dateList = new Array(result.docs.length);
-                    var totalBalanceList = new Array(result.docs.length);
+                    var labels = new Array(result.docs.length);
+                    var datas = new Array(result.docs.length);
                     $.each(result.docs, function(i, row){
                         red = row.balance < 0 ? "red" : "";
                         $('.balance').append('<tr><th>' + row.date + '</th><td class="'+ red +'">' + row.balance + '</td></tr>');
