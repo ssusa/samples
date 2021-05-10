@@ -14,7 +14,7 @@
             $('.drawer').drawer();
 
 /* ローカル実行 */
-/*
+
             var labels = new Array(10);
             var data = new Array(10);
             result = {"docs":[
@@ -44,19 +44,19 @@
             Chart.defaults.elements.point = {
                 radius: 0,              // ポイントの半径
                 pointStyle: 'circle',   // ポイントのスタイル
-                hitRadius: 0,           // ホバー検出の半径
-                hoverRadius: 0          // ホバー時の半径
+                hitRadius: 0            // ホバー検出の半径
             };
-            // アニメ実行時間
-            Chart.defaults.animation.duration = 0;                    
+            Chart.defaults.animation.duration = 0;// アニメ実行時間削除
+            Chart.defaults.plugins.legend = false;// 凡例削除
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: '収支',
+                        borderColor: 'rgba(0, 0, 0, 0.7)',
+                        //label: '収支',
                         data: data,
-                        borderWidth: 1
+                        borderWidth: 0.5
                     }]
                 },
                 options: {
@@ -67,7 +67,9 @@
                     }
                 }
             });  
-*/
+
+/* 本番実行 */
+/*
             json = '{"selector": {"date": {"$gt": "0"}},"fields": ["date","balance"],"sort": [{"date": "asc"}]}';
             $.ajax({
                 url: 'https://371c1ecf-fca5-4748-8949-a3cbeea34ceb-bluemix.cloudantnosqldb.appdomain.cloud/mydb/_find',
@@ -96,20 +98,20 @@
                     Chart.defaults.elements.point = {
                         radius: 0,              // ポイントの半径
                         pointStyle: 'circle',   // ポイントのスタイル
-                        hitRadius: 0,           // ホバー検出の半径
-                        hoverRadius: 0          // ホバー時の半径
+                        hitRadius: 0            // ホバー検出の半径
                     };
                     // アニメ実行時間
-                    Chart.defaults.animation.duration = 0;                    
+                    Chart.defaults.animation.duration = 0;// アニメ実行時間削除
+                    Chart.defaults.plugins.legend = false;// 凡例削除
                     var myChart = new Chart(ctx, {
                         type: 'line',
                         data: {
                             labels: labels,
                             datasets: [{
                                 borderColor: 'rgba(0, 0, 0, 0.7)',
-                                label: '収支',
+                                //label: '収支',
                                 data: data,
-                                borderWidth: 1
+                                borderWidth: 0.5
                             }]
                         },
                         options: {
@@ -125,6 +127,7 @@
                     console.log( e0, e1, e2 );
                 }
             });
+*/            
         });
     </script>        
 </head>
@@ -145,7 +148,7 @@
     </header>    
     <header style="border-bottom: #222 solid 1px;" >
         <div class="container">
-            <h1>タロチ's　収支表</h1>
+            <h1>RENOIZM.com　収支表</h1>
         </div>
     </header>
     <main>
