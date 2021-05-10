@@ -217,6 +217,8 @@ h2{
 }
 
 .skill i{
+    position:relative;
+    top:1px;
     margin-left:10px;
     color:#5bc0de;
 }
