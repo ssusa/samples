@@ -181,25 +181,25 @@ h2{
 }
 
 .profile p, .keireki p{
-    padding-left:15px;
+    padding:0 15px;
 }
 
-.kankyo table, .jimbutsu table{
+.kankyo{
     text-align: left;
     margin:0 15px;
     line-height:14pt;
 }
 
-.kankyo table tr, .jimbutsu table tr{
+.kankyo table tr{
     height:20px;
 }
 
-.kankyo table .td1, .jimbutsu table .td1{
+.kankyo table .td1{
     width:100px;
 }
 
-.kankyo table .td3, .jimbutsu table .td3{
-    padding-left:10px;
+.kankyo table .td3{
+    padding:0 10px;
 }
 
 .skill h3{
